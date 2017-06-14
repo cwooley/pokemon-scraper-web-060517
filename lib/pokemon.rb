@@ -25,9 +25,11 @@ class Pokemon
 
     db.execute(un_sanitized)
 
-    # p db.execute("SELECT * FROM pokemon")
+  # p db.execute("SELECT * FROM pokemon")
 
   end
+
+
 
 
 
