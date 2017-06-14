@@ -1,10 +1,8 @@
 require 'pry'
 class Pokemon
-  attr_accessor :type, :db, :id, :name
+  attr_accessor :type, :db, :id, :name, :hp
   def initialize(name)
     @name = name
-    @type = type
-    @db = db
   end
 
   def self.save(name, type, db)
@@ -16,6 +14,21 @@ class Pokemon
     pokemon = Pokemon.new(pokemon_arr[1])
     pokemon.id = pokemon_arr[0]
     pokemon.type = pokemon_arr[2]
+    if pokemon_arr[3]
+      pokemon.hp = pokemon_arr[3]
+    end
     pokemon
   end
+
+  def alter_hp(hp, db)
+    un_sanitized = "UPDATE pokemon SET hp = #{hp} WHERE id = #{self.id}"
+
+    db.execute(un_sanitized)
+
+    # p db.execute("SELECT * FROM pokemon")
+
+  end
+
+
+
 end
